@@ -12,6 +12,7 @@ class SocialPage extends StatefulWidget {
 }
 
 class _SocialPageState extends State<SocialPage> {
+  final PostCollection postCollection;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +23,11 @@ class _SocialPageState extends State<SocialPage> {
         child: Stack(
           children: [
             SingleChildScrollView(
-              child: Container(),
+              child: StreamBuilder(
+                  stream: postCollection.snapshots(),
+                  builder: (context, snapshot) {
+                    return Container();
+                  }),
             ),
             Align(
               alignment: Alignment.bottomCenter,
